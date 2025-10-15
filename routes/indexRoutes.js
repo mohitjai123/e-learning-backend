@@ -3,10 +3,13 @@ const suppilerRoutes = require("./Suppiler")
 const laptopRoutes = require("./laptopRoutes")
 const employeRoutes = require("./employeeRoutes")
 const itemsRoutes = require("./itemRoutes")
+const { login } = require("./authRoutes")
+const verifyToken = require("../middleware/auth")
 
-router.use("/suppliers", suppilerRoutes)
-router.use("/laptops", laptopRoutes)
-router.use("/employees", employeRoutes)
-router.use("/items", itemsRoutes)
+router.use("/suppliers", verifyToken, suppilerRoutes)
+router.use("/laptops", verifyToken, laptopRoutes)
+router.use("/employees", verifyToken, employeRoutes)
+router.use("/items", verifyToken, itemsRoutes)
+router.post("/auth/login", login)
 
 module.exports = router
