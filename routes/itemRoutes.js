@@ -19,6 +19,10 @@ router.get("/item-logs/:id",async(req,res)=>{
               model: models.Employee,
               as: "Employee"
             },
+            {
+              model:models.Supplier,
+              as:"Supplier"
+            }
           ],
     })
     res.send(logs)

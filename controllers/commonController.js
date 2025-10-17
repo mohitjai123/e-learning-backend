@@ -2,7 +2,7 @@ const { models } = require("../models");
 
 exports.updateItemStatus = async (req, res) => {
     try {
-      const { item_id, assigned_to, status, action_by, remarks } = req.body;
+      const { item_id, assigned_to, assigned_to_supplier, status, action_by, remarks } = req.body;
   
       // 1️⃣ Fetch the item
       const item = await models.Item.findByPk(item_id);
@@ -21,6 +21,7 @@ exports.updateItemStatus = async (req, res) => {
         assigned_to,
         previous_status,
         new_status: item.status,
+        assigned_to_supplier,
         action_by,
         action_date: new Date(),
         remarks,

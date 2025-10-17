@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER, // employee ID
       allowNull: true,
     },
+    assigned_to_supplier: {
+      type: DataTypes.INTEGER, // employee ID
+      allowNull: true,
+    },
     previous_status: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -32,7 +36,10 @@ module.exports = (sequelize) => {
   StatusLog.associate = (models) => {
     StatusLog.belongsTo(models.Item, { foreignKey: "item_id", as: "item" });
     StatusLog.belongsTo(models.Employee, { foreignKey: "assigned_to", as: "Employee" });
+    StatusLog.belongsTo(models.Supplier, { foreignKey: "assigned_to_supplier", as: "Supplier" });
+
   };
+
 
   return StatusLog;
 };

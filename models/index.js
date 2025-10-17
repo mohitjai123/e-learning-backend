@@ -9,6 +9,7 @@ const KeyboardModel = require('./Keyboard');
 const SupplierModel = require('./Supplier');
 const EmployeeModel = require('./Employee');
 const { sequelize } = require('./config');
+const SofaModel = require('./sofaModel');
 const StatusLogsModel = require('./statusLogs');
 
 
@@ -23,7 +24,8 @@ const models = {
   Keyboard: KeyboardModel(sequelize),
   Supplier: SupplierModel(sequelize),
   Employee: EmployeeModel(sequelize),
-  StatusLogs : StatusLogsModel(sequelize)
+  StatusLogs : StatusLogsModel(sequelize),
+  Sofa : SofaModel(sequelize)
 };
 
 // Apply associations (for belongsTo / hasMany)

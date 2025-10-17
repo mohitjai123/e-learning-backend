@@ -8,6 +8,7 @@ const connectDB = async () => {
     console.log('Database connected successfully.');
     await sequelize.sync();
 
+
     const superAdminExists = await Admin.findOne({ where: { role: 'superadmin' } });
     if (!superAdminExists) {
       const hashedPassword = await bcrypt.hash('SuperAdmin@123', 10);
